@@ -2,6 +2,7 @@
 {
     using Data;
     using Microsoft.AspNetCore.Mvc;
+    using System.Linq;
 
     [Route("api/[Controller]")]
     public class ProductsController : Controller
@@ -16,8 +17,14 @@
         [HttpGet]
         public IActionResult GetProducts()
         {
-            return this.Ok(this.productRepository.GetAll());
+            return this.Ok(this.productRepository.GetAllWithUsers());
         }
+
+        //public IQueryable GetAllWithUsers()
+        //{
+        //    return this.context.Products.Include(p => p.User).OrderBy(p => p.Name);
+        //}
+
     }
 
 }
