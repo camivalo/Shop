@@ -6,6 +6,8 @@
     {
         public int Id { get; set; }
 
+        public int OrderId { get; set; }
+
         [Required]
         public Product Product { get; set; }
 

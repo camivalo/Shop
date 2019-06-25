@@ -1,5 +1,6 @@
 ﻿namespace Shop.Web.Data.Repositories
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Entities;
@@ -22,6 +23,9 @@
         Task DeliverOrder(DeliverViewModel model);
 
         Task<Order> GetOrdersAsync(int id);
+
+
+        Task<List<OrderDetail>> GetOrdersDetailAsync(int id);
 
 
     }

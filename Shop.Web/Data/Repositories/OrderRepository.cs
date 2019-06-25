@@ -1,6 +1,7 @@
 ﻿namespace Shop.Web.Data.Repositories
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using Entities;
@@ -180,6 +181,30 @@
         }
 
 
+
+        public async Task<List<OrderDetail>> GetOrdersDetailAsync(int id)
+        {
+
+            //var order= await this.context.Orders
+            //   .Include(o => o.Items)
+            //   .Where(o => o.Id == id)
+            //   .ToListAsync();
+
+            //var details = order.Select(o => new OrderDetail
+            //{
+            //    Price = o.Price,
+            //    Product = o.Product,
+            //    Quantity = o.Quantity
+            //}).ToList();
+
+
+            var result = await this.context.OrderDetails
+                    .Include(o => o.Product)
+                    .Where(o => o.OrderId == id)
+                    .ToListAsync();
+            return result;
+
+        }
     }
 
 }

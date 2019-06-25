@@ -1,11 +1,14 @@
 ﻿namespace Shop.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using Data;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Shop.Web.Data.Entities;
     using Shop.Web.Data.Repositories;
+    using Shop.Web.Helpers;
     using Shop.Web.Models;
 
     [Authorize]
@@ -133,6 +136,37 @@
 
             return this.View();
         }
+
+        // GET: Products/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return new NotFoundViewResult("ProductNotFound");
+            }
+
+            var orderDetail = await this.orderRepository.GetOrdersDetailAsync(id.Value);
+
+            var model = new OrderDetail();
+
+            List<OrderDetail> l = new List<OrderDetail>();
+
+            foreach (OrderDetail o in orderDetail)
+            {
+
+                model = new OrderDetail
+                {
+                    Product = o.Product,
+                    Quantity = o.Quantity,
+
+
+                };
+                l.Add(model);
+            }
+
+            return View(l);
+        }
+
 
     }
 
