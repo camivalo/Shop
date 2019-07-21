@@ -13,6 +13,7 @@ namespace Shop.UIForms.ViewModels
     using GalaSoft.MvvmLight.Command;
     using Newtonsoft.Json;
     using Shop.Common.Helpers;
+    using Shop.UIForms.Helpers;
     using Shop.UIForms.Views;
     using Xamarin.Forms;
 
@@ -98,54 +99,54 @@ namespace Shop.UIForms.ViewModels
             if (string.IsNullOrEmpty(this.User.FirstName))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter the first name.",
-                    "Accept");
+                    Languages.Error,
+                    Languages.EnterFirstName,
+                    Languages.Accept);
                 return;
             }
 
             if (string.IsNullOrEmpty(this.User.LastName))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter the last name.",
-                    "Accept");
+                    Languages.Error,
+                    Languages.EnterLastName,
+                    Languages.Accept);
                 return;
             }
 
             if (this.Country == null)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must select a country.",
-                    "Accept");
+                    Languages.Error,
+                    Languages.SelectCountry,
+                    Languages.Accept);
                 return;
             }
 
             if (this.City == null)
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must select a city.",
-                    "Accept");
+                    Languages.Error,
+                    Languages.SelectCity,
+                    Languages.Accept);
                 return;
             }
 
             if (string.IsNullOrEmpty(this.User.Address))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter an address.",
-                    "Accept");
+                    Languages.Error,
+                    Languages.EnterAddress,
+                    Languages.Accept);
                 return;
             }
 
             if (string.IsNullOrEmpty(this.User.PhoneNumber))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter a phone number.",
-                    "Accept");
+                    Languages.Error,
+                    Languages.EnterPhone,
+                    Languages.Accept);
                 return;
             }
 
@@ -169,7 +170,7 @@ namespace Shop.UIForms.ViewModels
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     response.Message,
-                    "Accept");
+                    Languages.Accept);
                 return;
             }
 
@@ -178,8 +179,8 @@ namespace Shop.UIForms.ViewModels
 
             await Application.Current.MainPage.DisplayAlert(
                 "Ok",
-                "User updated!",
-                "Accept");
+                Languages.UserUpdated,
+                Languages.Accept);
             await App.Navigator.PopAsync();
         }
 
@@ -203,7 +204,7 @@ namespace Shop.UIForms.ViewModels
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     response.Message,
-                    "Accept");
+                    Languages.Accept);
                 return;
             }
 

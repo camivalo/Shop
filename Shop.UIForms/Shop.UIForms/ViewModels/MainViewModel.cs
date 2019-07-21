@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using Shop.Common.Models;
+using Shop.UIForms.Helpers;
 using Shop.UIForms.Views;
 using System;
 using System.Collections.Generic;
@@ -50,9 +51,42 @@ namespace Shop.UIForms.ViewModels
 
         public ChangePasswordViewModel ChangePassword { get; set; }
 
+        //LO NUEVO *****************************************************
+        public OrdersViewModel Orders { get; set; }
+
+        public AboutViewModel About { get; set; }
+
+        public AddOrderViewModel AddOrder { get; set; }
+
+        public ICommand AddOrderCommand => new RelayCommand(this.GoAddOrder);
+
+        private async void GoAddOrder()
+        {
+            this.AddOrder = new AddOrderViewModel();
+            await App.Navigator.PushAsync(new AddOrderPage());
+        }
+
+        public SelectProductOrderViewModel SelectProductOrder { get; set; }
+
+        public OrderDetailViewModel OrderDetail { get; set; }
+
+        public ShowProductReservedViewModel ShowProductReserved { get; set; }
+
+        public ICommand ShowProductReservedCommand => new RelayCommand(this.ShowReservedProduct);
+
+        private async void ShowReservedProduct()
+        {
+            this.ShowProductReserved = new ShowProductReservedViewModel();
+            await App.Navigator.PushAsync(new ShowProductReservedPage());
+        }
+
+        //LO NUEVO *****************************************************
+
         public ICommand AddProductCommand => new RelayCommand(this.GoAddProduct);
 
-      
+     
+
+
 
         public MainViewModel()
         {
@@ -85,7 +119,7 @@ namespace Shop.UIForms.ViewModels
         {
             Icon = "ic_info",
             PageName = "AboutPage",
-            Title = "About"
+            Title = Languages.About
         },
         
 
@@ -93,21 +127,28 @@ namespace Shop.UIForms.ViewModels
         {
             Icon = "ic_person",
             PageName = "ProfilePage",
-            Title = "Modify User"
+            Title = Languages.ModifyUser
         },
-
+        //LO NUEVO *****************************************************
+         new Menu
+        {
+            Icon = "ic_add_shopping_cart",
+            PageName = "OrdersPage",
+            Title = Languages.SeparateProduct
+        },
+        //LO NUEVO *****************************************************
         new Menu
         {
             Icon = "ic_phonelink_setup",
             PageName = "SetupPage",
-            Title = "Setup"
+            Title = Languages.Setup
         },
 
         new Menu
         {
             Icon = "ic_exit_to_app",
             PageName = "LoginPage",
-            Title = "Close session"
+            Title = Languages.CloseSession
         }
     };
 

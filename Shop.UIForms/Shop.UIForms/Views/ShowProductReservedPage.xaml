@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Shop.UIForms.Views.ShowProductReservedPage"
+              BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate ProductsReserved}">
+    <ContentPage.Content>
+        
+        <ScrollView
+             BindingContext="{Binding ShowProductReserved}">
+            <StackLayout>
+                <StackLayout
+                Orientation="Horizontal">
+                    <Button
+                    	BackgroundColor="Navy"
+                    	BorderRadius="23"
+                    	Command="{Binding BackToProductsCommand}"
+                    	HeightRequest="46"
+                    	HorizontalOptions="FillAndExpand"
+                    	IsEnabled="{Binding IsEnabled}"
+                    	Text="{i18n:Translate AddMoreProducts}"
+                    	TextColor="White">
+                    </Button>
+                    <Button
+                    	    BackgroundColor="Red"
+                    	    BorderRadius="23"
+                    	    Command="{Binding ConfirmOrderCommand}"
+                    	    HeightRequest="46"
+                    	    HorizontalOptions="FillAndExpand"
+                    	    IsEnabled="{Binding IsEnabled}"
+                    	    Text="{i18n:Translate ConfirmOrderXaml}"
+                    	    TextColor="White">
+                    </Button>
+
+                </StackLayout>
+                <ListView
+                    IsRefreshing="{Binding IsRefreshing}"
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding OrderDetailtemp}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DeleteOrderItemCommand}"/>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout
+                                        Grid.Column="0"
+                                	    VerticalOptions="Center">
+                                        <Label
+                                             HorizontalOptions="FillAndExpand"
+                    	                     FontAttributes="Bold"
+                    	                     Text="{i18n:Translate Product}"
+                                            TextColor="#0D8BE7">
+                                        </Label>
+                                        <Label
+                                             HorizontalOptions="FillAndExpand"
+                    	                     FontAttributes="Bold"
+                    	                     Text="{i18n:Translate Price}"
+                                            TextColor="#0D8BE7">
+                                        </Label>
+                                        <Label 
+                                            HorizontalOptions="FillAndExpand"
+                    	                    FontAttributes="Bold"
+                    	                    Text="{i18n:Translate Quantity}"
+                                            TextColor="#0D8BE7">
+                                        </Label>
+                                        <Label
+                                             HorizontalOptions="FillAndExpand"
+                    	                     FontAttributes="Bold"
+                    	                     Text="{i18n:Translate Value}"
+                                            TextColor="#0D8BE7">
+                                        </Label>
+
+                                    </StackLayout>
+                                    <StackLayout
+                                	Grid.Column="1"
+                                	VerticalOptions="Center">
+
+                                        <Label
+                                    	    FontAttributes="Bold"
+                                    	    FontSize="Medium"
+                                            HorizontalOptions="FillAndExpand"
+                                    	    Text="{Binding Product.Name}"
+                                    	    TextColor="Black">
+                                        </Label>
+                                        <Label
+                                            HorizontalOptions="FillAndExpand"
+                                    	    Text="{Binding Price, StringFormat='{0:C2}'}"
+                                    	    TextColor="Navy">
+                                        </Label>
+                                        <Label
+                                            HorizontalOptions="FillAndExpand"
+                                    	    Text="{Binding Quantity, StringFormat='{0:N2}'}"
+                                    	    TextColor="Navy">
+                                        </Label>
+                                        <Label
+                                            HorizontalOptions="FillAndExpand"
+                                    	    Text="{Binding Value, StringFormat='{0:C2}'}"
+                                    	    TextColor="Navy">
+                                        </Label>
+
+                                    </StackLayout>
+                                    <Image
+                                	Grid.Column="2"
+                                	Source="{Binding Product.ImageFullPath}"
+                                	WidthRequest="100">
+                                    </Image>
+
+                                    <Image
+                                	Grid.Column="3"
+                                	Source="ic_delete_forever">
+                                    </Image>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+               
+            </StackLayout>
+            
+                
+        </ScrollView>
+        
+    </ContentPage.Content>
+</ContentPage>

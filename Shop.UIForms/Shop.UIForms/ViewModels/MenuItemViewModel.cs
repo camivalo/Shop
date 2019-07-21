@@ -22,6 +22,7 @@ namespace Shop.UIForms.ViewModels
             switch (this.PageName)
             {
                 case "AboutPage":
+                    mainViewModel.About = new AboutViewModel();
                     await App.Navigator.PushAsync(new AboutPage());
                     break;
                 case "SetupPage":
@@ -30,6 +31,10 @@ namespace Shop.UIForms.ViewModels
                 case "ProfilePage":
                     mainViewModel.Profile = new ProfileViewModel();
                     await App.Navigator.PushAsync(new ProfilePage());
+                    break;
+                case "OrdersPage":
+                    mainViewModel.Orders = new OrdersViewModel();
+                    await App.Navigator.PushAsync(new OrdersPage());
                     break;
 
                 default:

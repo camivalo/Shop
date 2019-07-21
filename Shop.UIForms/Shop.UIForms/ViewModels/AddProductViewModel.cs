@@ -7,6 +7,7 @@
     using Plugin.Media;
     using Plugin.Media.Abstractions;
     using Shop.Common.Helpers;
+    using Shop.UIForms.Helpers;
     using Xamarin.Forms;
 
     public class AddProductViewModel : BaseViewModel
@@ -55,7 +56,7 @@
         {
             if (string.IsNullOrEmpty(this.Name))
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "You must enter a product name.", "Accept");
+                await Application.Current.MainPage.DisplayAlert("Error", Languages.SelectProduct, "Accept");
                 return;
             }
 

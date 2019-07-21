@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Shop.UIForms.Views.OrderDetailPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate ReservationDetail}">
+    <ContentPage.Content>
+        <StackLayout
+            BindingContext="{Binding OrderDetail}"
+            Padding="8">
+            <ListView
+                IsRefreshing="{Binding IsRefreshing}"
+                HasUnevenRows="True"
+                ItemsSource="{Binding OrderDetail}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Grid>
+
+                                   
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout
+                                        Grid.Column="0"
+                                	    VerticalOptions="Center">
+                                        <Label
+                    	                   
+                                            FontAttributes="Bold"
+                    	                    Text="{i18n:Translate Product}"
+                    	                    VerticalOptions="Center"
+                                            TextColor="#0D8BE7">
+                                        </Label>
+                                        <Label
+                    	                   
+                                            FontAttributes="Bold"
+                    	                    Text="{i18n:Translate Quantity}"
+                    	                    VerticalOptions="Center"
+                                            TextColor="#0D8BE7">
+                                        </Label>
+                                        <Label
+                    	                   
+                                            FontAttributes="Bold"
+                    	                    Text="{i18n:Translate Value}"
+                    	                    VerticalOptions="Center"
+                                            TextColor="#0D8BE7">
+                                        </Label>
+
+                                    </StackLayout>
+                                    <StackLayout
+                                        Grid.Column="1"
+                                	    VerticalOptions="Center">
+                                        <Label
+                                          
+                                    	    FontAttributes="Bold"
+                                    	    FontSize="Medium"
+                                    	    Text="{Binding Product.Name}"
+                                    	    TextColor="Black">
+                                        </Label>
+                                        <Label
+                                          
+                                    	    FontAttributes="Bold"
+                                    	    FontSize="Medium"
+                                    	    Text="{Binding Quantity}"
+                                    	    TextColor="Black">
+                                        </Label>
+
+                                        <Label
+                                          
+                                    	    FontAttributes="Bold"
+                                    	    FontSize="Medium"
+                                    	    Text="{Binding Value}"
+                                    	    TextColor="Black">
+                                        </Label>
+
+                                    </StackLayout>
+                                    <Image
+                                	Grid.Column="2"
+                                	Source="{Binding Product.ImageFullPath}"
+                                	WidthRequest="100">
+                                    </Image>
+
+
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

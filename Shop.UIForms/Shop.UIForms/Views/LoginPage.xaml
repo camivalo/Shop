@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Shop.UIForms.Views.LoginPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Login">
+             Title="{i18n:Translate Login}">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Login}">
@@ -14,24 +15,24 @@
                 Padding="8">
                 <Image
                 	HeightRequest="150"
-                	Source="logoShop">
+                	Source="logoShopRedondo">
                 </Image>
 
                 <Label
-                    Text="Email">
+                    Text="{i18n:Translate Email}">
                 </Label>
                 <Entry
                     Keyboard="Email"
-                    Placeholder="Enter Your Email..."
+                    Placeholder="{i18n:Translate EnterYourEmail}"
                     Text="{Binding Email}">
                     
                 </Entry>
                 <Label
-                    Text="Password">
+                    Text="{i18n:Translate Password}">
                 </Label>
                 <Entry
                     IsPassword="True"
-                    Placeholder="Enter Your Password..."
+                    Placeholder="{i18n:Translate EnterYourPassword}"
                     Text="{Binding Password}">
 
                 </Entry>
@@ -40,7 +41,7 @@
 	                HorizontalOptions="Center"
 	                Orientation="Horizontal">
                     <Label
-    	                Text="Rememberme in this device"
+    	                Text="{i18n:Translate RememberInThisDevice}"
     	                VerticalOptions="Center">
                     </Label>
                     <Switch
@@ -49,7 +50,7 @@
                 </StackLayout>
                 <Label
 	                HorizontalOptions="Center"
-	                Text="Forgot my password"
+	                Text="{i18n:Translate ForgotMyPassword}"
 	                TextColor="Navy">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding RememberPasswordCommand }"/>
@@ -68,7 +69,7 @@
     	                HeightRequest="46"
     	                HorizontalOptions="FillAndExpand"
     	                IsEnabled="{Binding IsEnabled}"
-    	                Text="Login"
+    	                Text="{i18n:Translate Login}"
     	                TextColor="White">          
                     </Button>
                     <Button
@@ -78,7 +79,7 @@
     	                HeightRequest="46"
     	                HorizontalOptions="FillAndExpand"
     	                IsEnabled="{Binding IsEnabled}"
-    	                Text="Registrarse"
+    	                Text="{i18n:Translate Register}"
     	                TextColor="White">      
                     </Button>
                 </StackLayout>

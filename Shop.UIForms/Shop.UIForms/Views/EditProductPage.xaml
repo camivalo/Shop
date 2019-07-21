@@ -1,23 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
          	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
          	x:Class="Shop.UIForms.Views.EditProductPage"
          	BindingContext="{Binding Main, Source={StaticResource Locator}}"
-         	Title="Edit Product">
+            Title="{i18n:Translate BookProducts}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_add_shopping_cart" Command="{Binding ShowProductReservedCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView
         	BindingContext="{Binding EditProduct}">
             <StackLayout
             	Padding="10">
                 <Image
-                	HeightRequest="150"
+                	HeightRequest="250"
                 	Source="{Binding Product.ImageFullPath}">
                 </Image>
-                <Label
+                <!--<Label
                 	FontSize="Micro"
                 	HorizontalOptions="Center"
                 	Text="Tap the image to change it...">
-                </Label>
+                </Label>-->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -26,34 +30,66 @@
                     <Label
                     	Grid.Column="0"
                     	Grid.Row="0"
-                    	Text="Name"
+                    	Text="{i18n:Translate Quantity}"
+                        HorizontalOptions="FillAndExpand"
                     	VerticalOptions="Center">
                     </Label>
                     <Entry
+                        x:Name="entryQuantity"
                     	Grid.Column="1"
                     	Grid.Row="0"
-                    	Placeholder="Product name..."
-                    	Text="{Binding Product.Name}">
+                        Keyboard="Numeric"
+                    	Placeholder="{i18n:Translate EnterQuantityXaml}"
+                    	Text="{Binding Quantity, Mode=OneWayToSource}">
                     </Entry>
+                    <Button
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Text="{i18n:Translate BookProducts}"
+                        Image="ic_add_shopping_cart"
+                        HorizontalOptions="Center"
+                        Command="{Binding ReservedCommand}"
+                        BorderRadius="23">
+
+                    </Button>
+                    <!--<Label
+                    	Grid.Column="0"
+                    	Grid.Row="0"
+                    	Text="Name"
+                        HorizontalOptions="FillAndExpand"
+                    	VerticalOptions="Center">
+                    </Label>
+                    <Label
+                    	Grid.Column="1"
+                    	Grid.Row="0"
+                        HorizontalOptions="FillAndExpand"
+                    	Text="{Binding Product.Name}">
+                    </Label>
                     <Label
                     	Grid.Column="0"
                     	Grid.Row="1"
                     	Text="Price"
+                         HorizontalOptions="FillAndExpand"
                     	VerticalOptions="Center">
                     </Label>
-                    <Entry
+                    <Label
                     	Grid.Column="1"
                     	Grid.Row="1"
-                    	Keyboard="Numeric"
-                    	Placeholder="Product price..."
+                         HorizontalOptions="FillAndExpand"
                     	Text="{Binding Product.Price}">
-                    </Entry>
+                    </Label>
+                    <Image
+    	                Grid.Column="0"
+                    	Grid.Row="3"
+    	               Source="ic_add_shopping_cart">
+                    </Image>-->
                 </Grid>
+              
                 <ActivityIndicator
                 	IsRunning="{Binding IsRunning}"
                 	VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
-                <StackLayout
+                <!--<StackLayout
                 	Orientation="Horizontal">
                     <Button
                     	BackgroundColor="Navy"
@@ -75,8 +111,9 @@
                     	Text="Delete"
                     	TextColor="White">
                     </Button>
-                </StackLayout>
+                </StackLayout>-->
             </StackLayout>
+         
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

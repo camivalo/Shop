@@ -1,13 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
          	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
          	x:Class="Shop.UIForms.Views.AboutPage"
-         	Title="About">
+            BindingContext="{Binding Main, Source={StaticResource Locator}}"
+         	Title="{i18n:Translate About}">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="About"
+        <StackLayout  
+            BindingContext="{Binding About}"
+            Padding="8">
+            <!--<Label Text="{i18n:Translate About}"
             	VerticalOptions="CenterAndExpand"
-            	HorizontalOptions="CenterAndExpand" />
+            	HorizontalOptions="CenterAndExpand" />-->
+            <Image
+                	HeightRequest="150"
+                	Source="logoShopRedondo">
+            </Image>
+            <Label
+                Text="Misión:"
+                FontAttributes="Bold"></Label>
+            <Frame
+                BackgroundColor="#4654FC"
+                Padding="10"
+                CornerRadius="30">
+                <!--<Label
+                    Text="Misión:"
+                    TextColor="White"
+                    FontAttributes="Bold"></Label>-->
+                <Label
+                    Text="Contribuir al descanso, salud y bienestar de las personas, poniendo a su disposición productos de la máxima calidad para cualquier momento del día y para todas las etapas de la vida, y gestionando los negocios de manera que creen valor para la compañía a la vez que para la sociedad."
+                    TextColor="White"
+                    />
+            </Frame>
+            <Label
+                Text="Visión:"
+                FontAttributes="Bold"></Label>
+            <Frame
+                BackgroundColor="#4654FC"
+                Padding="10"
+                CornerRadius="30">
+                <!--<Label
+                    Text="Misión:"
+                    TextColor="White"
+                    FontAttributes="Bold"></Label>-->
+                <Label
+                    Text="Ser la empresa reconocida como líder en descanso, salud y bienestar a nivel departamental por parte de sus consumidores, empleados, clientes, proveedores y todos los grupos de interés relacionados con la actividad de la compañía."
+                    TextColor="White"/>
+            </Frame>
+
+            <Label
+                Text="Contáctanos:"
+                FontAttributes="Bold"></Label>
+            <Frame
+                BackgroundColor="#4654FC"
+                Padding="10"
+                CornerRadius="30">
+                <!--<Label
+                    Text="Misión:"
+                    TextColor="White"
+                    FontAttributes="Bold"></Label>-->
+                <Label
+                    Text="Dirección: Bello - Antioquia&#10;Horario: Lunes - Sabado 8am a 7pm&#10;Teléfono: 301504119"
+                    TextColor="White"/>
+                
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

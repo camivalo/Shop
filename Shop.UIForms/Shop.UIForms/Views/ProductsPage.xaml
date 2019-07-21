@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Shop.UIForms.Views.ProductsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Products">
-    <ContentPage.ToolbarItems>
+              Title="{i18n:Translate Products}">
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_action_add_circle" Command="{Binding AddProductCommand}"/>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
 
     <ContentPage.Content>
         <StackLayout
@@ -46,18 +47,18 @@
                                     	TextColor="Black">
                                     </Label>
                                     <Label
-                                    	Text="{Binding Price, StringFormat='Price: {0:C2}'}"
+                                    	Text="{Binding Price, StringFormat='Precio: {0:C2}'}"
                                     	TextColor="Navy">
                                     </Label>
                                     <Label
-                                    	Text="{Binding Stock, StringFormat='Stock: {0:N2}'}"
+                                    	Text="{Binding Stock, StringFormat='Inventario: {0:N2}'}"
                                     	TextColor="Black">
                                     </Label>
                                    
                                 </StackLayout>
                                 <Image
     	                            Grid.Column="2"
-    	                            Source="ic_chevron_right">
+    	                            Source="ic_add_shopping_cart">
                                 </Image>
 
                             </Grid>

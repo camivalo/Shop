@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Shop.UIForms.Views.SelectProductOrderPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="{i18n:Translate SelectProductXaml}">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding SelectProductOrder}">
+            <StackLayout>
+               
+
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                    	Grid.Column="0"
+                    	Grid.Row="0"
+                    	Text="{i18n:Translate Product}"
+                    	VerticalOptions="Center">
+                    </Label>
+                    <Picker
+                    	Grid.Column="1"
+                    	Grid.Row="0"
+                        ItemDisplayBinding="{Binding Name}"
+                    	ItemsSource="{Binding Products}"
+                    	SelectedItem="{Binding Product}"
+                    	Title="{i18n:Translate SelectAProduct}">
+                    </Picker>
+                    <Label
+                    	Grid.Column="0"
+                    	Grid.Row="1"
+                    	Text="{i18n:Translate Quantity}"
+                    	VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                    	Grid.Column="1"
+                    	Grid.Row="1"
+                        Keyboard="Numeric"
+                    	Placeholder="{i18n:Translate EnterQuantityXaml}"
+                    	Text="{Binding Quantity}">
+                    </Entry>
+
+                  
+                </Grid>
+                <!--<ActivityIndicator
+                	IsRunning="{Binding IsRunning}"
+                	VerticalOptions="CenterAndExpand">
+                    </ActivityIndicator>-->
+                <StackLayout
+                	Orientation="Horizontal">
+                    <Button
+                    	BackgroundColor="Navy"
+                    	BorderRadius="23"
+                    	Command="{Binding ProductReservedCommand}"
+                    	HeightRequest="46"
+                    	HorizontalOptions="FillAndExpand"
+                    	IsEnabled="{Binding IsEnabled}"
+                    	Text="{i18n:Translate AddProductToList}"
+                    	TextColor="White">
+                    </Button>
+
+                </StackLayout>
+            </StackLayout>
+            
+            
+           
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

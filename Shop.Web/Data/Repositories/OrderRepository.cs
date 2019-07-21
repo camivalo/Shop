@@ -44,6 +44,30 @@
                 .OrderByDescending(o => o.OrderDate);
         }
 
+        public async Task<IQueryable<Order>> GetOrdersTempAsync(string userName)
+        {
+            var user = await this.userHelper.GetUserByEmailAsync(userName);
+            if (user == null)
+            {
+                return null;
+            }
+
+            if (await this.userHelper.IsUserInRoleAsync(user, "Admin"))
+            {
+                return this.context.Orders
+                    .Include(o => o.User)
+                    .Include(o => o.Items)
+                    .ThenInclude(i => i.Product)
+                    .OrderByDescending(o => o.OrderDate);
+            }
+
+            return this.context.Orders
+                .Include(o => o.Items)
+                .ThenInclude(i => i.Product)
+                .Where(o => o.User == user)
+                .OrderByDescending(o => o.OrderDate);
+        }
+
         public async Task<IQueryable<OrderDetailTemp>> GetDetailTempsAsync(string userName)
         {
             var user = await this.userHelper.GetUserByEmailAsync(userName);
@@ -96,7 +120,29 @@
             await this.context.SaveChangesAsync();
         }
 
-        public async Task ModifyOrderDetailTempQuantityAsync(int id, double quantity)
+
+        public async Task<bool>  AddItemToOrderFromAppforOrderTempAsync(List<OrderDetailTemp> model)
+        {
+            var user = await this.userHelper.GetUserByEmailAsync(model.Select(u => u.User.UserName).First());
+            if (user == null)
+            {
+                return false;
+            }
+
+            foreach (OrderDetailTemp m in model)
+            {
+                var tmp = new AddItemViewModel
+                {
+                    ProductId = m.Product.Id,
+                    Quantity = m.Quantity
+                };
+
+                await AddItemToOrderAsync(tmp, user.ToString());
+            }
+            return true;
+        }
+
+            public async Task ModifyOrderDetailTempQuantityAsync(int id, double quantity)
         {
             var orderDetailTemp = await this.context.OrderDetailTemps.FindAsync(id);
             if (orderDetailTemp == null)
@@ -110,6 +156,30 @@
                 this.context.OrderDetailTemps.Update(orderDetailTemp);
                 await this.context.SaveChangesAsync();
             }
+        }
+
+        public async Task DeleteOrderAsync(int id)
+        {
+            var orderSelected = await this.context.Orders.FindAsync(id);
+            if (orderSelected == null)
+            {
+                return;
+            }
+
+            //var orderDetail = orderSelected.Where(o => o.Id == product.Id).FirstOrDefault();
+            var orderDetail = this.context.OrderDetails.Where(o => o.OrderId == orderSelected.Id).ToList();
+
+            foreach(OrderDetail o in orderDetail)
+            {
+                this.context.OrderDetails.Remove(o);
+                await this.context.SaveChangesAsync();
+
+            }
+           
+
+
+            this.context.Orders.Remove(orderSelected);
+            await this.context.SaveChangesAsync();
         }
 
         public async Task DeleteDetailTempAsync(int id)
@@ -143,6 +213,59 @@
             }
 
             var details = orderTmps.Select(o => new OrderDetail
+            {
+                Price = o.Price,
+                Product = o.Product,
+                Quantity = o.Quantity
+            }).ToList();
+
+            var order = new Order
+            {
+                OrderDate = DateTime.UtcNow,
+                User = user,
+                Items = details,
+            };
+
+            this.context.Orders.Add(order);
+            this.context.OrderDetailTemps.RemoveRange(orderTmps);
+            await this.context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> ConfirmOrderFromAPPAsync(List<OrderDetailTemp> model)
+        {
+            var user = await this.userHelper.GetUserByEmailAsync(model.Select(u => u.User.UserName).First());
+            if (user == null)
+            {
+                return false;
+            }
+
+            foreach (OrderDetailTemp m in model)
+            {
+                var tmp = new AddItemViewModel
+                {
+                    ProductId = m.Product.Id,
+                    Quantity = m.Quantity
+                };
+
+                await AddItemToOrderAsync(tmp, user.ToString());
+            }
+
+
+
+
+
+            var orderTmps = await this.context.OrderDetailTemps
+                .Include(o => o.Product)
+                .Where(o => o.User == user)
+                .ToListAsync();
+
+            if (orderTmps == null || orderTmps.Count == 0)
+            {
+                return false;
+            }
+
+            var details = model.Select(o => new OrderDetail
             {
                 Price = o.Price,
                 Product = o.Product,

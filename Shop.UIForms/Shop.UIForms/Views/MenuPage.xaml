@@ -10,7 +10,7 @@
         	Padding="10">
             <Image
             	HeightRequest="150"
-            	Source="logoShop">
+            	Source="logoShopRedondo">
             </Image>
             <Label
 	            FontSize="Large"

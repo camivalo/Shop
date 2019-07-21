@@ -70,6 +70,18 @@
             return this.RedirectToAction("Create");
         }
 
+        public async Task<IActionResult> DeleteItemOrder(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            //await this.orderRepository.DeleteDetailTempAsync(id.Value);
+            await this.orderRepository.DeleteOrderAsync(id.Value);
+            return this.RedirectToAction("Index");
+        }
+
         public async Task<IActionResult> Increase(int? id)
         {
             if (id == null)

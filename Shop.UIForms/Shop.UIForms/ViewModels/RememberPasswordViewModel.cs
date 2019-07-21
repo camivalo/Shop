@@ -9,6 +9,7 @@ namespace Shop.UIForms.ViewModels
     using Common.Services;
     using GalaSoft.MvvmLight.Command;
     using Shop.Common.Models;
+    using Shop.UIForms.Helpers;
     using Xamarin.Forms;
 
     public class RememberPasswordViewModel : BaseViewModel
@@ -44,18 +45,18 @@ namespace Shop.UIForms.ViewModels
             if (string.IsNullOrEmpty(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter an email.",
-                    "Accept");
+                    Languages.Error,
+                    Languages.EnterEmail,
+                    Languages.Accept);
                 return;
             }
 
             if (!RegexHelper.IsValidEmail(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
-                    "Error",
-                    "You must enter a valid email.",
-                    "Accept");
+                    Languages.Error,
+                    Languages.EnterValidEmail,
+                    Languages.Accept);
                 return;
             }
 
@@ -82,14 +83,14 @@ namespace Shop.UIForms.ViewModels
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     response.Message,
-                    "Accept");
+                    Languages.Accept);
                 return;
             }
 
             await Application.Current.MainPage.DisplayAlert(
                 "Ok",
                 response.Message,
-                "Accept");
+                Languages.Accept);
             await Application.Current.MainPage.Navigation.PopAsync();
         }
 
