@@ -114,7 +114,7 @@
 
         private void RefresProductsList()
         {
-            this.Products = new ObservableCollection<ProductItemViewModel>(myProducts.Select(p => new ProductItemViewModel
+            this.Products = new ObservableCollection<ProductItemViewModel>(myProducts.Where(p => p.IsAvailabe).Select(p => new ProductItemViewModel
             {
                 Id = p.Id,
                 ImageUrl = p.ImageUrl,
