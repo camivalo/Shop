@@ -26,6 +26,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                      
                     </Grid.ColumnDefinitions>
                     <Label
                     	Grid.Column="0"
@@ -52,66 +53,102 @@
                         BorderRadius="23">
 
                     </Button>
-                    <!--<Label
-                    	Grid.Column="0"
-                    	Grid.Row="0"
-                    	Text="Name"
-                        HorizontalOptions="FillAndExpand"
-                    	VerticalOptions="Center">
-                    </Label>
-                    <Label
-                    	Grid.Column="1"
-                    	Grid.Row="0"
-                        HorizontalOptions="FillAndExpand"
-                    	Text="{Binding Product.Name}">
-                    </Label>
-                    <Label
-                    	Grid.Column="0"
-                    	Grid.Row="1"
-                    	Text="Price"
-                         HorizontalOptions="FillAndExpand"
-                    	VerticalOptions="Center">
-                    </Label>
-                    <Label
-                    	Grid.Column="1"
-                    	Grid.Row="1"
-                         HorizontalOptions="FillAndExpand"
-                    	Text="{Binding Product.Price}">
-                    </Label>
-                    <Image
+
+
+                    
+                   
+                        
+                    <!--<Image
     	                Grid.Column="0"
                     	Grid.Row="3"
     	               Source="ic_add_shopping_cart">
                     </Image>-->
                 </Grid>
-              
+
                 <ActivityIndicator
                 	IsRunning="{Binding IsRunning}"
                 	VerticalOptions="CenterAndExpand">
                 </ActivityIndicator>
-                <!--<StackLayout
-                	Orientation="Horizontal">
+
+                <StackLayout
+                	Orientation="Vertical"
+                    Padding="30">
+                    <Frame IsVisible="{Binding IsVisible}">
+                        <Label Text="Modificar Producto"
+                                TextColor="#0D8BE7"
+                               FontAttributes="Bold"/>
+                    </Frame>
+                    <Grid 
+                        IsVisible="{Binding IsVisible}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Label
+                    	Grid.Column="0"
+                    	Grid.Row="0"
+                    	Text="Name"
+                        HorizontalOptions="FillAndExpand"
+                    	VerticalOptions="Center">
+                        </Label>
+                        <Entry
+                    	Grid.Column="1"
+                    	Grid.Row="0"
+                        HorizontalOptions="FillAndExpand"
+                    	Text="{Binding Product.Name}">
+                        </Entry>
+                        <Label
+                    	Grid.Column="0"
+                    	Grid.Row="1"
+                    	Text="Stock"
+                        HorizontalOptions="FillAndExpand"
+                    	VerticalOptions="Center">
+                        </Label>
+                        <Entry
+                    	Grid.Column="1"
+                    	Grid.Row="1"
+                        HorizontalOptions="FillAndExpand"
+                    	Text="{Binding Product.Stock}">
+                        </Entry>
+                        <Label
+                    	Grid.Column="0"
+                    	Grid.Row="2"
+                    	Text="Price"
+                         HorizontalOptions="FillAndExpand"
+                    	VerticalOptions="Center">
+                        </Label>
+                        <Entry
+                    	Grid.Column="1"
+                    	Grid.Row="2"
+                         HorizontalOptions="FillAndExpand"
+                    	Text="{Binding Product.Price}">
+                        </Entry>
+                       
+                    </Grid>
                     <Button
-                    	BackgroundColor="Navy"
-                    	BorderRadius="23"
-                    	Command="{Binding SaveCommand}"
-                    	HeightRequest="46"
-                    	HorizontalOptions="FillAndExpand"
-                    	IsEnabled="{Binding IsEnabled}"
-                    	Text="Save"
-                    	TextColor="White">
+                    	    Grid.Row="4"
+                    	    BackgroundColor="Navy"
+                    	    BorderRadius="23"
+                    	    Command="{Binding SaveCommand}"
+                    	    HeightRequest="46"
+                    	    HorizontalOptions="FillAndExpand"
+                    	    IsEnabled="{Binding IsEnabled}"
+                    	    Text="Save"
+                    	    TextColor="White"
+                            IsVisible="{Binding IsVisible}">
                     </Button>
-                    <Button
-                    	BackgroundColor="Red"
-                    	BorderRadius="23"
-                    	Command="{Binding DeleteCommand}"
-                    	HeightRequest="46"
-                    	HorizontalOptions="FillAndExpand"
-                    	IsEnabled="{Binding IsEnabled}"
-                    	Text="Delete"
-                    	TextColor="White">
-                    </Button>
-                </StackLayout>-->
+                    <!--<Button
+                    	    BackgroundColor="Red"
+                    	    BorderRadius="23"
+                    	    Command="{Binding DeleteCommand}"
+                    	    HeightRequest="46"
+                    	    HorizontalOptions="FillAndExpand"
+                    	    IsEnabled="{Binding IsEnabled}"
+                    	    Text="Delete"
+                    	    TextColor="White">
+                        </Button>-->
+                </StackLayout>
             </StackLayout>
          
         </ScrollView>

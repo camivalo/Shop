@@ -13,6 +13,7 @@
     {
         private bool isRunning;
         private bool isEnabled;
+        private bool isVisible;
         private readonly ApiService apiService;
         private List<OrderDetailTemp> myOrderDetail;
 
@@ -34,6 +35,12 @@
             set => this.SetValue(ref this.isEnabled, value);
         }
 
+        public bool IsVisible
+        {
+            get => this.isVisible;
+            set => this.SetValue(ref this.isVisible, value);
+        }
+
         public ICommand SaveCommand => new RelayCommand(this.Save);
 
         public ICommand DeleteCommand => new RelayCommand(this.Delete);
@@ -44,6 +51,10 @@
 
         public EditProductViewModel(Product product)
         {
+            var mainViewModel = MainViewModel.GetInstance();
+            var userAdmin = mainViewModel.User.IsAdmin;
+            this.IsVisible = userAdmin;
+
             this.Product = product;
             this.apiService = new ApiService();
             this.Quantity = 0;

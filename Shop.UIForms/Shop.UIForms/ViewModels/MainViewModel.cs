@@ -149,12 +149,7 @@ namespace Shop.UIForms.ViewModels
             Title = Languages.Setup
         },
 
-        new Menu
-        {
-            Icon = "ic_exit_to_app",
-            PageName = "LoginPage",
-            Title = Languages.CloseSession
-        }
+        
     };
 
             if (isadmin)
@@ -168,6 +163,13 @@ namespace Shop.UIForms.ViewModels
                 });
 
             };
+
+            menus.Add(new Menu
+            {
+                Icon = "ic_exit_to_app",
+                PageName = "LoginPage",
+                Title = Languages.CloseSession
+            });
 
             this.Menus = new ObservableCollection<MenuItemViewModel>(menus.Select(m => new MenuItemViewModel
             {
