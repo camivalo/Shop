@@ -2,11 +2,9 @@
 using Shop.Common.Models;
 using Shop.UIForms.Helpers;
 using Shop.UIForms.Views;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Windows.Input;
 
 namespace Shop.UIForms.ViewModels
@@ -80,18 +78,20 @@ namespace Shop.UIForms.ViewModels
             await App.Navigator.PushAsync(new ShowProductReservedPage());
         }
 
+        public UserViewModel UserTotal { get; set; }
+
         //LO NUEVO *****************************************************
 
         public ICommand AddProductCommand => new RelayCommand(this.GoAddProduct);
 
-     
+
 
 
 
         public MainViewModel()
         {
             instance = this;
-            this.LoadMenus();
+            this.LoadMenus(false);
         }
 
         private async void GoAddProduct()
@@ -103,7 +103,7 @@ namespace Shop.UIForms.ViewModels
 
         public static MainViewModel GetInstance()
         {
-            if(instance == null)
+            if (instance == null)
             {
                 return new MainViewModel();
             }
@@ -111,7 +111,12 @@ namespace Shop.UIForms.ViewModels
             return instance;
         }
 
-        private void LoadMenus()
+        public void LoadMenusAdmin(bool isadmin)
+        {
+            this.LoadMenus(isadmin);
+        }
+
+        private void LoadMenus(bool isadmin)
         {
             var menus = new List<Menu>
     {
@@ -121,7 +126,7 @@ namespace Shop.UIForms.ViewModels
             PageName = "AboutPage",
             Title = Languages.About
         },
-        
+
 
         new Menu
         {
@@ -151,6 +156,18 @@ namespace Shop.UIForms.ViewModels
             Title = Languages.CloseSession
         }
     };
+
+            if (isadmin)
+            {
+
+                menus.Add(new Menu
+                {
+                    Icon = "ic_group",
+                    PageName = "UserPage",
+                    Title = Languages.Clients
+                });
+
+            };
 
             this.Menus = new ObservableCollection<MenuItemViewModel>(menus.Select(m => new MenuItemViewModel
             {

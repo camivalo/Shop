@@ -64,7 +64,10 @@ namespace Shop.Common.Models
         [JsonProperty("address")]
         public string Address { get; set; }
 
-        public string FullName { get { return $"{this.FirstName} {this.LastName}"; } }
+        [JsonProperty("isAdmin")]
+        public bool IsAdmin { get; set; }
+
+        public string FullName { get { return $"{this.FirstName} {this.LastName}"; } set { } }
 
     }
 }

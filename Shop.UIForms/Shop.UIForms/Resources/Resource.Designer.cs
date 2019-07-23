@@ -169,6 +169,15 @@ namespace Shop.UIForms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clients.
+        /// </summary>
+        public static string Clients {
+            get {
+                return ResourceManager.GetString("Clients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close Session.
         /// </summary>
         public static string CloseSession {

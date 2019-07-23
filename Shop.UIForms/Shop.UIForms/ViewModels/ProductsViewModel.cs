@@ -52,6 +52,13 @@
         {
             this.IsRefreshing = true;
 
+            //******** SE HACE ACA LA VALIDACION DEL USUARIO YA QUE COMO LA 1ra PAG QUE SE CARGA ES LA DE PRODUCTOS NECESITAMOS QUE SE VALIDE SI EL USUARIO ES O NO ADMIN
+            var mainViewModel = MainViewModel.GetInstance();
+            var userAdmin = mainViewModel.User.IsAdmin;
+            mainViewModel.LoadMenusAdmin(userAdmin);
+            //******** SE HACE ACA LA VALIDACION DEL USUARIO YA QUE COMO LA 1ra PAG QUE SE CARGA ES LA DE PRODUCTOS NECESITAMOS QUE SE VALIDE SI EL USUARIO ES O NO ADMIN
+
+
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var response = await this.apiService.GetListAsync<Product>(
                 url,

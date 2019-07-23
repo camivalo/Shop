@@ -1,39 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
+              xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="Shop.UIForms.Views.OrdersPage"
+             x:Class="Shop.UIForms.Views.UserPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="{i18n:Translate Reservations}">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="ic_action_add_circle"  Command="{Binding AddOrderCommand}"/>
-    </ContentPage.ToolbarItems>
-    
+         	Title="{i18n:Translate Clients}">
     <ContentPage.Content>
-        <StackLayout
-            BindingContext="{Binding Orders}"
-            Padding="8">
+        <StackLayout 
+                BindingContext="{Binding UserTotal}"
+                Padding="8">
             <ListView
                 IsRefreshing="{Binding IsRefreshing}"
                 HasUnevenRows="True"
-                ItemsSource="{Binding Orders}">
+                ItemsSource="{Binding Users}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
                                 <Grid>
-                                
-                                    <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding SelectOrderCommand}"/>
-                                    </Grid.GestureRecognizers>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
-                                    
                                     </Grid.ColumnDefinitions>
                                     <StackLayout
                                         Grid.Column="0"
@@ -55,91 +45,56 @@
                                         <Label
                     	                   
                                             FontAttributes="Bold"
-                    	                    Text="{i18n:Translate OrderDate}"
+                    	                    Text="{i18n:Translate Phone}"
                     	                    VerticalOptions="Center"
                                             TextColor="#0D8BE7">
                                         </Label>
                                         <Label
                     	                   
                                             FontAttributes="Bold"
-                    	                    Text="{i18n:Translate Lines}"
-                    	                    VerticalOptions="Center"
-                                            TextColor="#0D8BE7">
-                                        </Label>
-                                        <Label
-                    	                   
-                                            FontAttributes="Bold"
-                    	                    Text="{i18n:Translate Quantity}"
-                    	                    VerticalOptions="Center"
-                                            TextColor="#0D8BE7">
-                                        </Label>
-                                        <Label
-                    	                    
-                                            FontAttributes="Bold"
-                    	                    Text="{i18n:Translate Value}"
+                    	                    Text="{i18n:Translate Address}"
                     	                    VerticalOptions="Center"
                                             TextColor="#0D8BE7">
                                         </Label>
                                     </StackLayout>
                                     <StackLayout
-                                        Grid.Column="1"
+                                         Grid.Column="1"
                                 	    VerticalOptions="Center">
                                         <Label
                                           
                                     	    FontAttributes="Bold"
                                     	    FontSize="Medium"
-                                    	    Text="{Binding User.FullName}"
+                                    	    Text="{Binding FirstName}"
                                     	    TextColor="Black">
                                         </Label>
                                         <Label
                                           
                                     	    FontAttributes="Bold"
                                     	    FontSize="Medium"
-                                    	    Text="{Binding User.Email}"
+                                    	    Text="{Binding Email}"
                                     	    TextColor="Black">
                                         </Label>
-
-                                        <Label 
-                                           
-                                    	    Text="{Binding OrderDate}"
-                                    	    TextColor="Navy">
-                                        </Label>
-
                                         <Label
-                                            
-                                    	    Text="{Binding Lines}"
-                                    	    TextColor="Navy">
+                                          
+                                    	    FontAttributes="Bold"
+                                    	    FontSize="Medium"
+                                    	    Text="{Binding PhoneNumber}"
+                                    	    TextColor="Black">
                                         </Label>
-
                                         <Label
-                                            
-                                    	    Text="{Binding Quantity, StringFormat='{0:N2}'}"
-                                    	    TextColor="Navy">
-                                        </Label>
-
-                                        <Label
-                                            
-                                    	    Text="{Binding Value, StringFormat='{0:C2}'}"
-                                    	    TextColor="Navy">
+                                          
+                                    	    FontAttributes="Bold"
+                                    	    FontSize="Medium"
+                                    	    Text="{Binding Address}"
+                                    	    TextColor="Black">
                                         </Label>
                                     </StackLayout>
-                                
-                                        
-                                      
-
-                                    <Image
-    	                            Grid.Column="2"
-                                   
-    	                            Source="ic_detail">
-                                    </Image>
-
                                 </Grid>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-
-
+                
             </ListView>
         </StackLayout>
     </ContentPage.Content>

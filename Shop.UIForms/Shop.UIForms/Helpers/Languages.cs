@@ -173,6 +173,8 @@ namespace Shop.UIForms.Helpers
         public static string ProductsReserved => Resource.ProductsReserved;
         public static string AddMoreProducts => Resource.AddMoreProducts;
 
+        public static string Clients => Resource.Clients;
+
 
     }
 

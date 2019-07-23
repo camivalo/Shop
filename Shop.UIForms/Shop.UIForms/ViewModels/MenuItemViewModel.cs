@@ -36,6 +36,10 @@ namespace Shop.UIForms.ViewModels
                     mainViewModel.Orders = new OrdersViewModel();
                     await App.Navigator.PushAsync(new OrdersPage());
                     break;
+                case "UserPage":
+                    mainViewModel.UserTotal= new UserViewModel();
+                    await App.Navigator.PushAsync(new UserPage());
+                    break;
 
                 default:
                     Settings.User = string.Empty;

@@ -390,4 +390,7 @@
   <data name="AddMoreProducts" xml:space="preserve">
     <value>Agregar más productos</value>
   </data>
+  <data name="Clients" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
 </root>

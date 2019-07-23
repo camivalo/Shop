@@ -699,6 +699,52 @@
             }
         }
 
+        public async Task<Response> GetAllUserAsync(
+   string urlBase,
+   string servicePrefix,
+   string controller,
+   string tokenType,
+   string accessToken)
+        {
+            try
+            {
+                //var request = JsonConvert.SerializeObject(new RecoverPasswordRequest { Email = "" });
+                //var content = new StringContent(request, Encoding.UTF8, "application/json");
+                var client = new HttpClient
+                {
+                    BaseAddress = new Uri(urlBase)
+                };
+
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(tokenType, accessToken);
+                var url = $"{servicePrefix}{controller}";
+                var response = await client.GetAsync(url);
+                var answer = await response.Content.ReadAsStringAsync();
+                if (!response.IsSuccessStatusCode)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = answer,
+                    };
+                }
+
+                var user = JsonConvert.DeserializeObject<List<User>>(answer);
+                return new Response
+                {
+                    IsSuccess = true,
+                    Result = user,
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = ex.Message,
+                };
+            }
+        }
+
     }
 
 }

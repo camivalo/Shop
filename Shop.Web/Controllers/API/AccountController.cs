@@ -1,15 +1,14 @@
 ﻿namespace Shop.Web.Controllers.API
 {
-    using System.Linq;
-    using System.Threading.Tasks;
     using Common.Models;
-    using Data;
     using Helpers;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Shop.Web.Data.Repositories;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     [Route("api/[Controller]")]
     public class AccountController : Controller
@@ -147,6 +146,7 @@
             }
 
             var user = await this.userHelper.GetUserByEmailAsync(request.Email);
+            user.IsAdmin = await this.userHelper.IsUserInRoleAsync(user, "Admin");
             if (user == null)
             {
                 return this.BadRequest(new Response
@@ -236,7 +236,15 @@
             });
         }
 
+        [HttpGet]
+        [Route("GetAllUsersAsync")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        public async Task<IActionResult> GetAllUsersAsync()
+        {
+            var users = await this.userHelper.GetAllUsersAsync();
 
+            return Ok(users);
+        }
     }
 
 }
