@@ -19,7 +19,7 @@
 
         public OrderDetailTemp orderDetail2 { get; set; }
 
-        public int Quantity { get; set; }
+        public string Quantity { get; set; }
 
         public Product Product { get; set; }
 
@@ -57,7 +57,7 @@
 
             this.Product = product;
             this.apiService = new ApiService();
-            this.Quantity = 0;
+            //this.Quantity = 0;
             this.IsEnabled = true;
         }
 
@@ -138,7 +138,7 @@
 
         private async void Reserved()
         {
-            if (this.Quantity <= 0)
+            if ((string.IsNullOrEmpty(this.Quantity)) || !(int.Parse(this.Quantity) > 0)  )
             {
                 await Application.Current.MainPage.DisplayAlert(
                    "Error",
@@ -165,7 +165,7 @@
 
                 Product = this.Product,
                 Price = this.Product.Price,
-                Quantity = this.Quantity,
+                Quantity = int.Parse(this.Quantity),
                 User = userNow
 
             };

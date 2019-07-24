@@ -8,9 +8,9 @@
              x:Class="Shop.UIForms.Views.OrdersPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="{i18n:Translate Reservations}">
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Icon="ic_action_add_circle"  Command="{Binding AddOrderCommand}"/>
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
     
     <ContentPage.Content>
         <StackLayout
