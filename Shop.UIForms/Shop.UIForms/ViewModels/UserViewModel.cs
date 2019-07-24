@@ -79,5 +79,10 @@ namespace Shop.UIForms.ViewModels
             .OrderBy(u => u.FirstName)
             .ToList());
         }
+
+       public List<User> userList()
+        {
+            return this.Users.ToList();
+        }
     }
 }

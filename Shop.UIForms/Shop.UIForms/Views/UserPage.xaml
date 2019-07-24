@@ -12,7 +12,12 @@
         <StackLayout 
                 BindingContext="{Binding UserTotal}"
                 Padding="8">
+            <SearchBar x:Name="UsuariosSearchBar"
+                       
+                       TextChanged="UsuariosSearchBar_TextChanged"
+                       BackgroundColor="White"/>
             <ListView
+                x:Name="UsuariosSearchList"
                 IsRefreshing="{Binding IsRefreshing}"
                 HasUnevenRows="True"
                 ItemsSource="{Binding Users}">

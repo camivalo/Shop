@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Shop.Common.Models;
+using Shop.UIForms.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,18 @@ namespace Shop.UIForms.Views
         public UserPage()
         {
             InitializeComponent();
+        }
+
+        private void UsuariosSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+            var mainViewModel = MainViewModel.GetInstance();
+            var users = mainViewModel.UserTotal;
+
+            List<User> userList = users.userList();
+
+            var userSearched = userList.Where(c => c.FullName.ToLower().Contains(UsuariosSearchBar.Text));
+            UsuariosSearchList.ItemsSource = userSearched;
         }
     }
 }

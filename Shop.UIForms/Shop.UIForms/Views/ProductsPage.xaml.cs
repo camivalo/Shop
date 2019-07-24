@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shop.UIForms.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,17 @@ namespace Shop.UIForms.Views
         public ProductsPage()
         {
             InitializeComponent();
+        }
+
+        private void ProductSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var mainViewModel = MainViewModel.GetInstance();
+            var products = mainViewModel.Products;
+
+            List<ProductItemViewModel> productList = products.productList();
+
+            var productSearched = productList.Where(p => p.Name.ToLower().Contains(ProductSearchBar.Text));
+            ProductSearchList.ItemsSource = productSearched;
         }
     }
 }

@@ -131,5 +131,10 @@
             .ToList());
         }
 
+        public List<ProductItemViewModel> productList()
+        {
+            return this.Products.ToList();
+        }
+
     }
 }

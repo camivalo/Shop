@@ -16,7 +16,11 @@
         <StackLayout
             BindingContext="{Binding Products}"
             Padding="8">
+            <SearchBar x:Name="ProductSearchBar"
+                       TextChanged="ProductSearchBar_TextChanged"
+                       BackgroundColor="White"/>
             <ListView
+                x:Name="ProductSearchList"
                 IsRefreshing="{Binding IsRefreshing}"
                 HasUnevenRows="True"
                 ItemsSource="{Binding Products}">

@@ -89,7 +89,7 @@
                         <Label
                     	Grid.Column="0"
                     	Grid.Row="0"
-                    	Text="Name"
+                    	Text="Nombre"
                         HorizontalOptions="FillAndExpand"
                     	VerticalOptions="Center">
                         </Label>
@@ -102,7 +102,7 @@
                         <Label
                     	Grid.Column="0"
                     	Grid.Row="1"
-                    	Text="Stock"
+                    	Text="Cantidad"
                         HorizontalOptions="FillAndExpand"
                     	VerticalOptions="Center">
                         </Label>
@@ -115,7 +115,7 @@
                         <Label
                     	Grid.Column="0"
                     	Grid.Row="2"
-                    	Text="Price"
+                    	Text="Precio"
                          HorizontalOptions="FillAndExpand"
                     	VerticalOptions="Center">
                         </Label>
@@ -135,7 +135,7 @@
                     	    HeightRequest="46"
                     	    HorizontalOptions="FillAndExpand"
                     	    IsEnabled="{Binding IsEnabled}"
-                    	    Text="Save"
+                    	    Text="Guardar"
                     	    TextColor="White"
                             IsVisible="{Binding IsVisible}">
                     </Button>
