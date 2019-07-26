@@ -328,6 +328,34 @@
             return result;
 
         }
+
+        public async Task <Order> ModifyOrderDeliveryDateAsync(int id, Common.Models.Order order)
+        {
+            var orderNew = await this.context.Orders.FindAsync(id);
+            //if (orderDetailTemp == null)
+            //{
+            //    return;
+            //}
+
+            orderNew.DeliveryDate = order.DeliveryDate;
+             this.context.Orders.Update(orderNew);
+             await this.context.SaveChangesAsync();
+
+            return await this.context.Orders.Include(o => o.User).Include(o => o.Items).Where(o => o.Id == id).FirstAsync();
+                //FindAsync(id);
+
+        }
+
+
+        public async Task<IQueryable<OrderDetail>> GetOrderDetail(int id)
+        {
+            
+         
+            return  this.context.OrderDetails
+                .Include(o => o.Product)
+                .Where(o => o.OrderId == id);
+        }
+
     }
 
 }

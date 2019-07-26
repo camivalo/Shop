@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
          	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:i18n="clr-namespace:Shop.UIForms.Helpers"
          	x:Class="Shop.UIForms.Views.AddProductPage"
          	BindingContext="{Binding Main, Source={StaticResource Locator}}"
-         	Title="Add Product">
+         	Title="{i18n:Translate AddProduct}">
     <ContentPage.Content>
         <ScrollView
         	BindingContext="{Binding AddProduct}">
@@ -20,7 +21,7 @@
                 <Label
                 	FontSize="Micro"
                 	HorizontalOptions="Center"
-                	Text="Tap the image to change it...">
+                	Text="{i18n:Translate TapTheImage}">
                 </Label>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -30,26 +31,26 @@
                     <Label
                     	Grid.Column="0"
                     	Grid.Row="0"
-                    	Text="Name"
+                    	Text="{i18n:Translate Product}"
                     	VerticalOptions="Center">
                     </Label>
                     <Entry
                     	Grid.Column="1"
                     	Grid.Row="0"
-                    	Placeholder="Product name..."
+                    	Placeholder="{i18n:Translate Product}"
                     	Text="{Binding Name}">
                     </Entry>
                     <Label
                     	Grid.Column="0"
                     	Grid.Row="1"
-                    	Text="Price"
+                    	Text="{i18n:Translate Price}"
                     	VerticalOptions="Center">
                     </Label>
                     <Entry
                     	Grid.Column="1"
                     	Grid.Row="1"
                     	Keyboard="Numeric"
-                    	Placeholder="Product price..."
+                    	Placeholder="{i18n:Translate Price}"
                     	Text="{Binding Price}">
                     </Entry>
                 </Grid>
@@ -63,7 +64,7 @@
                 	Command="{Binding SaveCommand}"
                 	HeightRequest="46"
                 	IsEnabled="{Binding IsEnabled}"
-                	Text="Save"
+                	Text="{i18n:Translate Save}"
                 	TextColor="White">
                 </Button>
             </StackLayout>

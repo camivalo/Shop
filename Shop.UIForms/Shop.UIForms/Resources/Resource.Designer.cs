@@ -106,6 +106,15 @@ namespace Shop.UIForms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AddProduct.
+        /// </summary>
+        public static string AddProduct {
+            get {
+                return ResourceManager.GetString("AddProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Product to list.
         /// </summary>
         public static string AddProductToList {
@@ -147,6 +156,15 @@ namespace Shop.UIForms.Resources {
         public static string BookProducts {
             get {
                 return ResourceManager.GetString("BookProducts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
@@ -480,6 +498,24 @@ namespace Shop.UIForms.Resources {
         public static string ForgotMyPassword {
             get {
                 return ResourceManager.GetString("ForgotMyPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From Camera.
+        /// </summary>
+        public static string FromCamera {
+            get {
+                return ResourceManager.GetString("FromCamera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From Gallery.
+        /// </summary>
+        public static string FromGallery {
+            get {
+                return ResourceManager.GetString("FromGallery", resourceCulture);
             }
         }
         
@@ -862,6 +898,15 @@ namespace Shop.UIForms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tap the image to change it....
+        /// </summary>
+        public static string TapTheImage {
+            get {
+                return ResourceManager.GetString("TapTheImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User updated!.
         /// </summary>
         public static string UserUpdated {
@@ -876,6 +921,15 @@ namespace Shop.UIForms.Resources {
         public static string Value {
             get {
                 return ResourceManager.GetString("Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where do you take the picture?.
+        /// </summary>
+        public static string WhereDoYouTakeThePicture {
+            get {
+                return ResourceManager.GetString("WhereDoYouTakeThePicture", resourceCulture);
             }
         }
         

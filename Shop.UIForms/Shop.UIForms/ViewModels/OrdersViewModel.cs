@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using Xamarin.Forms;
 
 namespace Shop.UIForms.ViewModels
@@ -74,13 +73,30 @@ namespace Shop.UIForms.ViewModels
             this.RefresOrdersList();
         }
 
+        public DateTime? delivery(DateTime? d)
+        {
+
+
+            if (d != null)
+            {
+                d = d.Value.ToLocalTime();
+            }
+
+
+            return d;
+        }
+
         private void RefresOrdersList()
         {
+
+
+
             this.Orders = new ObservableCollection<OrderItemViewModel>(myOrders.Select(o => new OrderItemViewModel
             {
                 Id = o.Id,
                 User = o.User,
                 OrderDate = o.OrderDateLocal.Value,
+                DeliveryDate = delivery(o.DeliveryDate),
                 Items = o.Items,
                 Lines = o.Lines,
                 Quantity = o.Quantity,

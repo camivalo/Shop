@@ -97,6 +97,12 @@
 
 
             </ListView>
+            <Button
+                Text="Despachar"
+                IsVisible="{Binding IsVisible}"
+                Command="{Binding DispatchCommand}">
+                
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -34,7 +34,9 @@
 
         Task<List<OrderDetail>> GetOrdersDetailAsync(int id);
 
+        Task<Order> ModifyOrderDeliveryDateAsync(int id, Common.Models.Order order);
 
+        Task<IQueryable<OrderDetail>> GetOrderDetail(int id);
     }
 
 }

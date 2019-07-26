@@ -393,4 +393,22 @@
   <data name="Clients" xml:space="preserve">
     <value>Clientes</value>
   </data>
+  <data name="AddProduct" xml:space="preserve">
+    <value>Añadir Producto</value>
+  </data>
+  <data name="TapTheImage" xml:space="preserve">
+    <value>Toca la imagen para cambiarla ...</value>
+  </data>
+  <data name="WhereDoYouTakeThePicture" xml:space="preserve">
+    <value>¿De dónde tomas la foto?</value>
+  </data>
+  <data name="FromGallery" xml:space="preserve">
+    <value>De la galería</value>
+  </data>
+  <data name="FromCamera" xml:space="preserve">
+    <value>De la cámara</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
 </root>

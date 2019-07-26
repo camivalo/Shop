@@ -121,19 +121,19 @@
             await CrossMedia.Current.Initialize();
 
             var source = await Application.Current.MainPage.DisplayActionSheet(
-                "Where do you take the picture?",
-                "Cancel",
+                Languages.WhereDoYouTakeThePicture,
+                Languages.Cancel,
                 null,
-                "From Gallery",
-                "From Camera");
+                Languages.FromGallery,
+                Languages.FromCamera);
 
-            if (source == "Cancel")
+            if (source == Languages.Cancel)
             {
                 this.file = null;
                 return;
             }
 
-            if (source == "From Camera")
+            if (source == Languages.FromCamera)
             {
                 this.file = await CrossMedia.Current.TakePhotoAsync(
                     new StoreCameraMediaOptions

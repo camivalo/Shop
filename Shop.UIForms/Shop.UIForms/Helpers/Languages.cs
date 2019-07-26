@@ -174,6 +174,12 @@ namespace Shop.UIForms.Helpers
         public static string AddMoreProducts => Resource.AddMoreProducts;
 
         public static string Clients => Resource.Clients;
+        public static string AddProduct => Resource.AddProduct;
+        public static string TapTheImage => Resource.TapTheImage;
+        public static string WhereDoYouTakeThePicture => Resource.WhereDoYouTakeThePicture;
+        public static string FromCamera => Resource.FromCamera;
+        public static string FromGallery => Resource.FromGallery;
+        public static string Cancel => Resource.Cancel;
 
 
     }

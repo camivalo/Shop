@@ -139,10 +139,93 @@ namespace Shop.Web.Controllers.API
             return Ok();
         }
 
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutOrder([FromRoute] int id, [FromBody]  Common.Models.Order order)
+        {
+
+           
+
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest(ModelState);
+            }
+
+            if (id != order.Id)
+            {
+                return BadRequest();
+            }
+
+            var oldOrder= await this.orderRepository.GetByIdAsync(id);
+            if (oldOrder == null)
+            {
+                return this.BadRequest("Order Id don't exists.");
+            }
+
+            var user = new Data.Entities.User()
+            {
+                FirstName = order.User.FirstName,
+                Address = order.User.Address,
+                CityId = order.User.CityId,
+                Email = order.User.Email,
+                IsAdmin = order.User.IsAdmin,
+                LastName = order.User.LastName,
+                PhoneNumber = order.User.PhoneNumber,
+                UserName = order.User.UserName
+                
+
+
+            };
+
+            //TODO: Upload images
+            oldOrder.OrderDate = order.OrderDate;
+            oldOrder.DeliveryDate = order.DeliveryDate;
+            oldOrder.User = user;
+            //oldProduct.LastSale = product.LastSale;
+            //oldProduct.Name = product.Name;
+            //oldProduct.Price = product.Price;
+            //oldProduct.Stock = product.Stock;
+
+            //oldOrder.OrderDate = order.OrderDate;
+            //oldOrder.DeliveryDate = order.DeliveryDate;
+            //oldOrder.User.Address = order.User.Address;
+            //oldOrder.User.CityId = order.User.CityId;
+            //oldOrder.User.Email = order.User.Email;
+            //oldOrder.User.FirstName = order.User.FirstName;
+            //oldOrder.User.IsAdmin = order.User.IsAdmin;
+            //oldOrder.User.LastName = order.User.LastName;
+            //oldOrder.User.PhoneNumber = order.User.PhoneNumber;
+            //oldOrder.User.UserName = order.User.UserName;
+
+
+            var updatedOrder = await this.orderRepository.ModifyOrderDeliveryDateAsync(id, order);
+            return Ok(updatedOrder);
+        }
+
         //public IQueryable GetAllWithUsers()
         //{
         //    return this.context.Products.Include(p => p.User).OrderBy(p => p.Name);
         //}
+
+
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetOrderDetail([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.BadRequest(ModelState);
+            }
+
+            
+            //if (itemOrder == null)
+            //{
+            //    return this.NotFound();
+            //}
+
+            //await this.orderRepository.DeleteAsync(itemOrder);
+            return Ok(await this.orderRepository.GetOrderDetail(id));
+        }
 
     }
 

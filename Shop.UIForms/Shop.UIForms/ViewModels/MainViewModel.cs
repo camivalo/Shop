@@ -142,12 +142,12 @@ namespace Shop.UIForms.ViewModels
             Title = Languages.SeparateProduct
         },
         //LO NUEVO *****************************************************
-        new Menu
-        {
-            Icon = "ic_phonelink_setup",
-            PageName = "SetupPage",
-            Title = Languages.Setup
-        },
+        //new Menu
+        //{
+        //    Icon = "ic_phonelink_setup",
+        //    PageName = "SetupPage",
+        //    Title = Languages.Setup
+        //},
 
         
     };
@@ -160,6 +160,12 @@ namespace Shop.UIForms.ViewModels
                     Icon = "ic_group",
                     PageName = "UserPage",
                     Title = Languages.Clients
+                });
+                menus.Add(new Menu
+                {
+                    Icon = "ic_library_add",
+                    PageName = "AddProductPage",
+                    Title = Languages.AddProduct
                 });
 
             };

@@ -62,6 +62,13 @@
                                         <Label
                     	                   
                                             FontAttributes="Bold"
+                    	                    Text="Fecha despacho"
+                    	                    VerticalOptions="Center"
+                                            TextColor="#0D8BE7">
+                                        </Label>
+                                        <Label
+                    	                   
+                                            FontAttributes="Bold"
                     	                    Text="{i18n:Translate Lines}"
                     	                    VerticalOptions="Center"
                                             TextColor="#0D8BE7">
@@ -103,6 +110,13 @@
                                            
                                     	    Text="{Binding OrderDate}"
                                     	    TextColor="Navy">
+                                        </Label>
+
+                                        <Label 
+                                           
+                                    	    Text="{Binding DeliveryDate}"
+                                    	    TextColor="Red"
+                                             FontAttributes="Bold">
                                         </Label>
 
                                         <Label

@@ -51,5 +51,7 @@ namespace Shop.Common.Models
                 return this.OrderDate.ToLocalTime();
             }
         }
+
+       
     }
 }
